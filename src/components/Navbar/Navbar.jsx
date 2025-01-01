@@ -24,11 +24,9 @@ export default function Navbar() {
   // routing
   const routing = [
     { path: "/", name: "Home" },
-    { path: "/services", name: "Services" },
-    { path: "/projects", name: "Projects" },
-    { path: "/pricing", name: "Pricing" },
-    { path: "/blogs", name: "Blogs" },
-    { path: "/contact", name: "Contact us" },
+    { path: "/admission-info", name: "Admission Info" },
+    { path: "/event", name: "Events" },
+    { path: "/about-us", name: "About us" },
   ];
 
   if (error || OutError) {
@@ -84,7 +82,7 @@ export default function Navbar() {
                         pathname === path
                           ? "text-[#20b820]"
                           : "dark:text-[#fff] text-[#000]"
-                      } focus:text-[#20b820]`}
+                      } focus:text-[#20b820] text-base`}
                       href={path}
                     >
                       {name}
@@ -93,7 +91,9 @@ export default function Navbar() {
                 ))}
               </ul>
             </div>
-            <a className="btn btn-ghost text-xl">Medify</a>
+            <a className="btn btn-ghost text-xl">
+              <strong className="text-4xl">7</strong>College
+            </a>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
@@ -104,7 +104,7 @@ export default function Navbar() {
                       pathname === path
                         ? "text-[#20b820]"
                         : "dark:text-[#fff] text-[#000]"
-                    } focus:text-[#20b820]`}
+                    } focus:text-[#20b820] text-base`}
                     href={path}
                   >
                     {name}
