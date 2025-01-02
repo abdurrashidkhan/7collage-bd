@@ -1,5 +1,6 @@
 import { auth } from "@/app/firebase.init";
 import Loading from "@/app/loading";
+import userInfoInsert from "@/database/userInfoInsert/userInfoInsert";
 import Image from "next/image";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import googleLogo from "../../../images/googleLogo.png";
@@ -30,7 +31,7 @@ export default function LoginWithGoogle() {
   }
   return (
     <div>
-      <button className="mt-2">
+      <button className="mt-2" onClick={() => googleLogin()}>
         <Image
           className="mx-auto w-[30px] h-auto"
           loading="lazy"
