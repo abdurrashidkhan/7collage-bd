@@ -1,3 +1,5 @@
+import Footer from "@/components/Footer/Footer";
+import Navbar from "@/components/Navbar/Navbar";
 import { Hind_Siliguri, Poppins } from "next/font/google";
 import "./globals.css";
 // Import Poppins for English content
@@ -22,7 +24,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${tiroBangla.className} ${poppins.className}    antialiased bg-[#fff] text-slate-800`}
       >
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
