@@ -46,7 +46,7 @@ export default function Navbar() {
     return <Loading></Loading>;
   }
   return (
-    <nav className="navbar bg-[#fff] dark:bg-[#122033] border-b border-[#603bf65e] shadow-2xl fixed z-[9999] py-0">
+    <nav className="navbar bg-[#fff]   border-b border-[#603bf65e] shadow-2xl fixed z-[9999] py-0">
       <div className="container mx-auto px-2">
         <div className="navbar">
           <div className="navbar-start">
@@ -73,7 +73,7 @@ export default function Navbar() {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-slate-100 rounded-box w-52"
               >
                 {routing.map(({ path, name }) => (
                   <li key={path} className="px-3 py-1">
@@ -180,7 +180,7 @@ export default function Navbar() {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2  bg-[#fff] dark:bg-[#101C2C] dark:text-[fff] shadow-2xl rounded border-[1px] dark:border-[#0e105c71]  w-52"
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2  bg-[#fff] shadow-2xl rounded border-[1px] dark:border-[#0e105c71]  w-52"
               >
                 <li>
                   <Link

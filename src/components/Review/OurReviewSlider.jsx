@@ -70,7 +70,7 @@ export default function OurReviewSlider() {
       >
         {reviewContent.map((r) => (
           <SwiperSlide key={r.id}>
-            <div className="bg-[#fff] dark:bg-[#122033] shadow-2xl p-2">
+            <div className="bg-[#fff] shadow-2xl p-2">
               <div className="">
                 <p className="text-base">{r.review}</p>
               </div>

@@ -19,7 +19,7 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder="Your Email Here"
-                className="border border-gray-400 rounded-l px-4 py-2 w-60 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="border border-gray-400 rounded-l px-4 py-2 w-60 focus:outline-none focus:ring-1 focus:ring-blue-500 bg-slate-100"
               />
               <button className="bg-blue-600 text-white px-6 py-2 rounded-r hover:bg-blue-700">
                 Join
