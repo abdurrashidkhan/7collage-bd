@@ -1,24 +1,44 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import loadingAnimation from "@/assert/svg/2nd.json";
-import lottie from "lottie-web";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+
+// Dynamic import of lottie-web with SSR disabled
+const LottiePlayer = dynamic(() => import("lottie-web"), { ssr: false });
 
 export default function CollegeGoals() {
   const animationContainer = useRef(null);
+  const [isLoaded, setIsLoaded] = useState(false); // For tracking load status
 
   useEffect(() => {
-    const animationInstance = lottie.loadAnimation({
-      container: animationContainer.current,
-      renderer: "svg",
-      loop: true,
-      autoplay: true,
-      animationData: loadingAnimation,
-    });
+    const loadAnimation = async () => {
+      const lottie = (await LottiePlayer).default;
 
-    // Clean up the animation on component unmount
-    return () => animationInstance.destroy();
-  }, []);
+      if (lottie && animationContainer.current) {
+        const animationInstance = lottie.loadAnimation({
+          container: animationContainer.current,
+          renderer: "svg",
+          loop: true,
+          autoplay: true,
+          animationData: loadingAnimation,
+        });
+
+        setIsLoaded(true);
+
+        // Clean up the animation on component unmount
+        return () => animationInstance.destroy();
+      }
+    };
+
+    if (typeof window !== "undefined") {
+      loadAnimation();
+    }
+  }, []); // Empty dependency array ensures it runs only once
+
+  if (!isLoaded) {
+    return <div>Loading animation...</div>;
+  }
 
   return (
     <section className="py-10">

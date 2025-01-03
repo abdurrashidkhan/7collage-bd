@@ -1,27 +1,59 @@
-"use client"
+"use client";
+
+import dynamic from "next/dynamic";
 import loadingAnimation from "@/assert/svg/loading.json";
-import lottie from "lottie-web";
-import { useEffect, useRef } from "react";
+
+// Dynamically import lottie-web with SSR disabled
+const LottiePlayer = dynamic(() => import("lottie-web"), { ssr: false });
+
+import { useEffect, useRef, useState } from "react";
 
 export default function Loading() {
   const animationContainer = useRef(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [error, setError] = useState(null); // State to track errors
 
   useEffect(() => {
-    const animationInstance = lottie.loadAnimation({
-      container: animationContainer.current,
-      renderer: "svg",
-      loop: true,
-      autoplay: true,
-      animationData: loadingAnimation,
-    });
+    if (animationContainer.current) {
+      const loadAnimation = async () => {
+        try {
+          const lottie = (await LottiePlayer).default;
 
-    // Clean up the animation on component unmount
-    return () => animationInstance.destroy();
-  }, []);
+          if (lottie) {
+            lottie.loadAnimation({
+              container: animationContainer.current,
+              renderer: "svg",
+              loop: true,
+              autoplay: true,
+              animationData: loadingAnimation,
+            });
+
+            setIsLoaded(true);
+          }
+        } catch (err) {
+          setError("An error occurred while loading the animation.");
+          console.error(err); // Log error for debugging
+          setIsLoaded(false);
+        }
+      };
+
+      loadAnimation();
+    }
+  }, []); // Empty dependency array ensures it runs only once
+
+  // If there's an error, display it
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  // If loading, display loading text
+  if (!isLoaded) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <div className=" w-full h-[100vh] fixed top-0 left-0 mx-auto z-[999999]">
-      <div className="content_center" ref={animationContainer} style={{ width: 500, height: 500 }}></div>
+    <div>
+      <div ref={animationContainer} style={{ width: "200px", height: "200px" }} />
     </div>
   );
 }
