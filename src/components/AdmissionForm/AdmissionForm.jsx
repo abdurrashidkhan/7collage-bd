@@ -76,10 +76,11 @@ export default function CollegeAdmissionsForm() {
               </label>
               <input
                 type="text"
+                placeholder="enter you fast name"
                 {...register("firstName", {
                   required: "First name is required",
                 })}
-                className="mt-1 block w-full border border-gray-300 rounded-md p-2 bg-[#fff]"
+                className="mt-1 block w-full border border-gray-300 rounded-md p-2 bg-[#fff] "
               />
               {errors.firstName && (
                 <span className="text-sm text-red-500">
@@ -93,8 +94,9 @@ export default function CollegeAdmissionsForm() {
               </label>
               <input
                 type="text"
+                placeholder="enter you middle initial"
                 {...register("middleInitial")}
-                className="mt-1 block w-full border border-gray-300 rounded-md p-2 bg-[#fff]"
+                className="mt-1 block w-full border border-gray-300 rounded-md p-2 bg-[#fff] "
               />
             </div>
             <div>
@@ -103,8 +105,9 @@ export default function CollegeAdmissionsForm() {
               </label>
               <input
                 type="text"
+                placeholder="enter you last name"
                 {...register("lastName", { required: "Last name is required" })}
-                className="mt-1 block w-full border border-gray-300 rounded-md p-2 bg-[#fff]"
+                className="mt-1 block w-full border border-gray-300 rounded-md p-2 bg-[#fff] "
               />
               {errors.lastName && (
                 <span className="text-sm text-red-500">
