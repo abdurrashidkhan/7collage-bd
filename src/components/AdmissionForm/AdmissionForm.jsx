@@ -1,36 +1,70 @@
 "use client";
+import { auth } from "@/app/firebase.init";
+import Loading from "@/app/loading";
+import insertAdmissionInfo from "@/database/insert/insertAdmissionInfo";
+import { useEffect, useState } from "react";
+import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import CheckAdmin from "../Admin/CheckAdmin";
+import CheckingUser from "../Admin/checkingUser";
 
 export default function CollegeAdmissionsForm() {
+  const [user, loading, error] = useAuthState(auth);
+  const [signOut, outLoading, OutError] = useSignOut(auth);
+  const checkingUsers = CheckingUser(); // call checking user function
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    CheckAdmin(user, signOut);
+  }, [user, signOut]);
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    const insertData = {
-      firstName: data?.firstName,
-      middleInitial: data?.middleInitial,
-      lastName: data?.lastName,
-      dateOfBirth: data?.dateOfBirth,
-      gender: data?.gender,
-      citizenship: data?.citizenship,
-      phone: data?.phone,
-      email: data?.email,
-      city: data?.city,
-      state: data?.state,
-      zipCode: data?.zipCode,
-      emergencyFirstName: data?.emergencyFirstName,
-      emergencyLastName: data?.emergencyLastName,
-      relationship: data?.relationship,
-      emergencyEmail: data?.emergencyEmail,
-      emergencyPhone: data?.emergencyPhone,
-      otherLanguages: data?.otherLanguages, // "Yes" or "No"otherLanguages,
-    };
-    console.log(insertData);
-  };
+  const onSubmit = async (data) => {
+    setIsLoading(true);
+    try {
+      const insertData = {
+        firstName: data?.firstName,
+        middleInitial: data?.middleInitial,
+        lastName: data?.lastName,
+        dateOfBirth: data?.dateOfBirth,
+        gender: data?.gender,
+        citizenship: data?.citizenship,
+        phone: data?.phone,
+        email: data?.email,
+        city: data?.city,
+        state: data?.state,
+        zipCode: data?.zipCode,
+        emergencyFirstName: data?.emergencyFirstName,
+        emergencyLastName: data?.emergencyLastName,
+        relationship: data?.relationship,
+        emergencyEmail: data?.emergencyEmail,
+        emergencyPhone: data?.emergencyPhone,
+        otherLanguages: data?.otherLanguages, // "Yes" or "No"otherLanguages,
+      };
+      console.log(insertData);
+      // console.log(insertData)
+      // Handle form submission logic here (e.g., save to database)
 
+      const book = await insertAdmissionInfo(insertData, setIsLoading, reset);
+      // reset(); // Reset the form after successful submission
+    } catch (error) {
+      console.error("Error uploading files:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  if (loading || outLoading) {
+    return <Loading />;
+  }
+
+  if (error || OutError) {
+    console.error(error?.message || OutError?.message);
+  }
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="w-full max-w-4xl bg-white p-8 rounded-lg shadow-md">
@@ -319,7 +353,11 @@ export default function CollegeAdmissionsForm() {
               type="submit"
               className="px-6 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700"
             >
-              Next
+              {isLoading ? (
+                <span className="loading loading-spinner loading-xs"></span>
+              ) : (
+                "Next"
+              )}
             </button>
           </div>
         </form>
