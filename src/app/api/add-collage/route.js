@@ -31,7 +31,7 @@ export async function POST(request) {
 }
 export async function GET(request) {
   await connectMongodb();
-  const allCollages = await collages.find({}).catch();
+  const allCollage = await collages.find({}).catch();
   // console.log(allUser)
-  return NextResponse.json({ allCollages });
+  return NextResponse.json({ allCollage });
 }

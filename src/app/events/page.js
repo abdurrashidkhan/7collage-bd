@@ -65,7 +65,7 @@ export default function Events() {
                     </div>
                   )}
                 </div>
-                <h2 className="text-xl font-semibold  py-2">{e?.title?.length > 30 ? `${e?.title.slice(0, 28)}...` : e?.title || "Untitled Event"}</h2>
+                <h2 className="text-xl font-medium  py-2">{e?.title?.length > 30 ? `${e?.title.slice(0, 28)}...` : e?.title || "Untitled Event"}</h2>
                 <p className="text-gray-600">{e?.description?.length > 140 ? `${e?.description.slice(0, 140)} ....` : e?.description || "No description available."}</p>
               </Link>
             ))
