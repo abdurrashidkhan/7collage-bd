@@ -19,8 +19,8 @@ const Layout = ({ children }) => {
 
   const dashboardRouting = [
     { path: "/dashboard", name: "Overview" },
-    { path: "/dashboard/add-product", name: "Add Product" },
-    { path: "/dashboard/manage-product", name: "Manage Product" },
+    { path: "/dashboard/add-event", name: "Add Event" },
+    { path: "/dashboard/manage-events", name: "Manage Events" },
   ];
 
   useEffect(() => {

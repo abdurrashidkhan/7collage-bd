@@ -1,8 +1,8 @@
 import Swal from "sweetalert2";
-export default async function insertAdmissionInfo(insertData, seIsLoading, reset) {
+export default async function insertEvent(insertData, seIsLoading, reset) {
   try {
     // C:\projects\digital-marketing-agency\src\app\api\merge-marketing\v1\users\insert-user\[email].js
-    const res = await fetch(`/api/add-admission-info/`, {
+    const res = await fetch(`/api/add-event/`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(insertData),
@@ -14,7 +14,7 @@ export default async function insertAdmissionInfo(insertData, seIsLoading, reset
     if (res.ok) {
       seIsLoading(false);
       reset();
-      Swal.fire("Congestion", "your admission submitted", "success");
+      Swal.fire("Done", "Event annulment submitted", "success");
     }
     return res.json();
   } catch (error) {
