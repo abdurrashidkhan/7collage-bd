@@ -2,10 +2,9 @@
 import { auth } from "@/app/firebase.init";
 import Loading from "@/app/loading";
 import insertAdmissionInfo from "@/database/insert/insertAdmissionInfo";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import CheckAdmin from "../Admin/CheckAdmin";
 import CheckingUser from "../Admin/checkingUser";
 
 export default function CollegeAdmissionsForm() {
@@ -14,9 +13,6 @@ export default function CollegeAdmissionsForm() {
   const checkingUsers = CheckingUser(); // call checking user function
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    CheckAdmin(user, signOut);
-  }, [user, signOut]);
   const {
     register,
     handleSubmit,
@@ -68,7 +64,7 @@ export default function CollegeAdmissionsForm() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="w-full max-w-4xl bg-white p-8 rounded-lg shadow-md">
-        <h1 className="text-2xl font-bold mb-6 text-center">
+        <h1 className="text-slate-700 text-2xl font-bold mb-6 text-center">
           COLLEGE ADMISSIONS FORM
         </h1>
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
@@ -356,7 +352,7 @@ export default function CollegeAdmissionsForm() {
               {isLoading ? (
                 <span className="loading loading-spinner loading-xs"></span>
               ) : (
-                "Next"
+                "Submit"
               )}
             </button>
           </div>

@@ -19,6 +19,7 @@ const Layout = ({ children }) => {
 
   const dashboardRouting = [
     { path: "/dashboard", name: "Overview" },
+    { path: "/dashboard/add-collages", name: "Add Collage" },
     { path: "/dashboard/add-event", name: "Add Event" },
     { path: "/dashboard/manage-events", name: "Manage Events" },
   ];
