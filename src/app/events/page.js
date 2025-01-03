@@ -1,5 +1,26 @@
+"use client"
+import allEvent from "@/database/find/allEvents/allEvents";
+import { useEffect, useState } from "react";
+import Loading from "../loading";
 
-export default function page() {
+export default function Events() {
+  const [allContent, setAllContent] = useState([]);
+  const [IsLoading, setLoading] = useState(false);
+  const contentLoad = async () => {
+    setLoading(true);
+    const { allEvents } = await allEvent();
+    setAllContent(allEvents)
+    setLoading(false);
+  };
+  console.log(allContent)
+  // data faceting
+  useEffect(() => {
+    contentLoad();
+  }, []);
+
+  if (IsLoading) {
+    return <Loading></Loading>
+  }
   return (
     <section>
       <div className="container mx-auto px-4 py-10 pt-[8rem]">
