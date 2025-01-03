@@ -73,15 +73,15 @@ export default function Navbar() {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-slate-100 rounded-box w-52"
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-slate-100 text-slate-800 rounded-box w-52"
               >
                 {routing.map(({ path, name }) => (
                   <li key={path} className="px-3 py-1">
                     <Link
                       className={`${
                         pathname === path
-                          ? "text-[#20b820]"
-                          : "dark:text-[#fff] text-[#000]"
+                          ? "text-[#20b820] font-medium"
+                          : "text-slate-800 font-medium"
                       } focus:text-[#20b820] text-base`}
                       href={path}
                     >
@@ -102,8 +102,8 @@ export default function Navbar() {
                   <Link
                     className={`${
                       pathname === path
-                        ? "text-[#20b820]"
-                        : "dark:text-[#fff] text-[#000]"
+                        ? "text-[#20b820] font-medium"
+                        : "text-slate-800 font-medium"
                     } focus:text-[#20b820] text-base`}
                     href={path}
                   >
@@ -180,7 +180,7 @@ export default function Navbar() {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2  bg-[#fff] shadow-2xl rounded border-[1px] dark:border-[#0e105c71]  w-52"
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2  bg-[#fff] shadow-2xl rounded   w-52"
               >
                 <li>
                   <Link

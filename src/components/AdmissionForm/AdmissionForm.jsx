@@ -79,7 +79,7 @@ export default function CollegeAdmissionsForm() {
                 {...register("firstName", {
                   required: "First name is required",
                 })}
-                className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                className="mt-1 block w-full border border-gray-300 rounded-md p-2 bg-[#fff]"
               />
               {errors.firstName && (
                 <span className="text-sm text-red-500">
@@ -94,7 +94,7 @@ export default function CollegeAdmissionsForm() {
               <input
                 type="text"
                 {...register("middleInitial")}
-                className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                className="mt-1 block w-full border border-gray-300 rounded-md p-2 bg-[#fff]"
               />
             </div>
             <div>
@@ -104,7 +104,7 @@ export default function CollegeAdmissionsForm() {
               <input
                 type="text"
                 {...register("lastName", { required: "Last name is required" })}
-                className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                className="mt-1 block w-full border border-gray-300 rounded-md p-2 bg-[#fff]"
               />
               {errors.lastName && (
                 <span className="text-sm text-red-500">
@@ -124,7 +124,7 @@ export default function CollegeAdmissionsForm() {
               {...register("dateOfBirth", {
                 required: "Date of birth is required",
               })}
-              className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+              className="mt-1 block w-full border border-gray-300 rounded-md p-2 bg-[#fff]"
             />
             {errors.dateOfBirth && (
               <span className="text-sm text-red-500">
@@ -145,7 +145,7 @@ export default function CollegeAdmissionsForm() {
                     type="radio"
                     value="Male"
                     {...register("gender", { required: "Gender is required" })}
-                    className="h-4 w-4 border-gray-300"
+                    className="h-4 w-4 border-gray-300 bg-[#fff] radio"
                   />
                   <span className="ml-2">Male</span>
                 </label>
@@ -154,7 +154,7 @@ export default function CollegeAdmissionsForm() {
                     type="radio"
                     value="Female"
                     {...register("gender", { required: "Gender is required" })}
-                    className="h-4 w-4 border-gray-300"
+                    className="h-4 w-4 border-gray-300 bg-[#fff] radio"
                   />
                   <span className="ml-2">Female</span>
                 </label>
@@ -173,7 +173,7 @@ export default function CollegeAdmissionsForm() {
                 {...register("citizenship", {
                   required: "Citizenship is required",
                 })}
-                className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                className="mt-1 block w-full border border-gray-300 rounded-md p-2 bg-[#fff]"
               >
                 <option value="">Please select</option>
                 <option value="bangladesh">Bangladesh</option>
@@ -195,7 +195,7 @@ export default function CollegeAdmissionsForm() {
               <input
                 type="text"
                 {...register("phone", { required: "Phone number is required" })}
-                className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                className="mt-1 block w-full border border-gray-300 rounded-md p-2 bg-[#fff]"
                 placeholder="(000) 000-0000"
               />
               {errors.phone && (
@@ -211,7 +211,7 @@ export default function CollegeAdmissionsForm() {
               <input
                 type="email"
                 {...register("email", { required: "Email is required" })}
-                className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                className="mt-1 block w-full border border-gray-300 rounded-md p-2 bg-[#fff]"
                 placeholder="example@example.com"
               />
               {errors.email && (
@@ -231,13 +231,13 @@ export default function CollegeAdmissionsForm() {
               <input
                 type="text"
                 {...register("city", { required: "City is required" })}
-                className="block w-full border border-gray-300 rounded-md p-2"
+                className="block w-full border border-gray-300 rounded-md p-2 bg-[#fff]"
                 placeholder="City"
               />
               <input
                 type="text"
                 {...register("state", { required: "State is required" })}
-                className="block w-full border border-gray-300 rounded-md p-2"
+                className="block w-full border border-gray-300 rounded-md p-2 bg-[#fff]"
                 placeholder="State / Province"
               />
               <input
@@ -245,7 +245,7 @@ export default function CollegeAdmissionsForm() {
                 {...register("zipCode", {
                   required: "Postal code is required",
                 })}
-                className="block w-full border border-gray-300 rounded-md p-2"
+                className="block w-full border border-gray-300 rounded-md p-2 bg-[#fff]"
                 placeholder="Postal / Zip Code"
               />
               {errors.zipCode && (
@@ -267,7 +267,7 @@ export default function CollegeAdmissionsForm() {
                 {...register("emergencyFirstName", {
                   required: "First name is required",
                 })}
-                className="block w-full border border-gray-300 rounded-md p-2"
+                className="block w-full border border-gray-300 rounded-md p-2 bg-[#fff]"
                 placeholder="First Name"
               />
               <input
@@ -275,7 +275,7 @@ export default function CollegeAdmissionsForm() {
                 {...register("emergencyLastName", {
                   required: "Last name is required",
                 })}
-                className="block w-full border border-gray-300 rounded-md p-2"
+                className="block w-full border border-gray-300 rounded-md p-2 bg-[#fff]"
                 placeholder="Last Name"
               />
               <input
@@ -283,7 +283,7 @@ export default function CollegeAdmissionsForm() {
                 {...register("relationship", {
                   required: "Relationship is required",
                 })}
-                className="block w-full border border-gray-300 rounded-md p-2"
+                className="block w-full border border-gray-300 rounded-md p-2 bg-[#fff]"
                 placeholder="Relationship"
               />
             </div>
@@ -293,7 +293,7 @@ export default function CollegeAdmissionsForm() {
                 {...register("emergencyEmail", {
                   required: "Email is required",
                 })}
-                className="block w-full border border-gray-300 rounded-md p-2"
+                className="block w-full border border-gray-300 rounded-md p-2 bg-[#fff]"
                 placeholder="example@example.com"
               />
               <input
@@ -301,7 +301,7 @@ export default function CollegeAdmissionsForm() {
                 {...register("emergencyPhone", {
                   required: "Phone number is required",
                 })}
-                className="block w-full border border-gray-300 rounded-md p-2"
+                className="block w-full border border-gray-300 rounded-md p-2 bg-[#fff]"
                 placeholder="(000) 000-0000"
               />
             </div>
@@ -320,7 +320,7 @@ export default function CollegeAdmissionsForm() {
                   {...register("otherLanguages", {
                     required: "This field is required",
                   })}
-                  className="h-4 w-4 border-gray-300"
+                  className="h-4 w-4 border-gray-300 bg-[#fff] radio"
                 />
                 <span className="ml-2">Yes</span>
               </label>
@@ -331,7 +331,7 @@ export default function CollegeAdmissionsForm() {
                   {...register("otherLanguages", {
                     required: "This field is required",
                   })}
-                  className="h-4 w-4 border-gray-300"
+                  className="h-4 w-4 border-gray-300 bg-[#fff] radio"
                 />
                 <span className="ml-2">No</span>
               </label>
