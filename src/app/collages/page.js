@@ -47,7 +47,7 @@ export default function Collages() {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2  lg:md:grid-cols-3 xl:md:grid-cols-4 gap-5">
               {allContent.length > 0 ? (
                 allContent.map((e) => (
-                  <Link href={`/event/${e?._id}`} key={e?._id} className="bg-white shadow-2xl p-2">
+                  <Link href={`/collage/${e?._id}`} key={e?._id} className="bg-white shadow-2xl p-2">
                     <div className="relative w-full h-[18rem] p-4">
                       {e?.image ? (
                         <Image
