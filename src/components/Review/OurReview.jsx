@@ -1,7 +1,7 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import loadingAnimation from "@/assert/svg/review.json";
+import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 import OurReviewSlider from "./OurReviewSlider";
 import "./style.css";

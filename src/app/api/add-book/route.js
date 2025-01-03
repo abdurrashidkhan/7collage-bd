@@ -1,42 +1,50 @@
 import connectMongodb from "@/lib/mongodb";
-import books from "@/models/booksSchema";
+import admissionInfo from "@/models/admissionInfoSchema";
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
   const {
-    bookName,
-    title,
-    contentDurations,
-    contentType,
-    catagories,
-    displaySection,
-    contentSubtitles,
-    director,
-    cast,
-    freeOrPaid,
-    description,
-    video,
-    smImage,
-    lgImage
+    firstName,
+    middleInitial,
+    lastName,
+    dateOfBirth,
+    gender,
+    citizenship,
+    phone,
+    email,
+    city,
+    state,
+    zipCode,
+    emergencyFirstName,
+    emergencyLastName,
+    relationship,
+    emergencyEmail,
+    emergencyPhone,
+    otherLanguages,
+    date,
   } = await request.json();
   const data = {
-    bookName,
-    title,
-    contentDurations,
-    contentType,
-    catagories,
-    displaySection,
-    contentSubtitles,
-    director,
-    cast,
-    freeOrPaid,
-    description,
-    video,
-    smImage,
-    lgImage
+    firstName,
+    middleInitial,
+    lastName,
+    dateOfBirth,
+    gender,
+    citizenship,
+    phone,
+    email,
+    city,
+    state,
+    zipCode,
+    emergencyFirstName,
+    emergencyLastName,
+    relationship,
+    emergencyEmail,
+    emergencyPhone,
+    otherLanguages,
+    date,
   };
   await connectMongodb();
-  await books.create(data);
+  await admissionInfo.create(data);
   return NextResponse.json({
     message: "data upload success",
     status: true,
@@ -45,7 +53,7 @@ export async function POST(request) {
 }
 export async function GET(request) {
   await connectMongodb();
-  const allBooks = await books.find({}).catch();
+  const alAdmissionInfo = await admissionInfo.find({}).catch();
   // console.log(allUser)
-  return NextResponse.json({ allBooks });
+  return NextResponse.json({ alAdmissionInfo });
 }
