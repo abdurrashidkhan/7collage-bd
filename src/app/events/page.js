@@ -39,14 +39,14 @@ export default function Events() {
 
   return (
     <section>
-      <div className="container mx-auto px-4 py-10 pt-[8rem]">
+      <div className="container mx-auto px-4 py-10 pt-[4rem] sm:pt-[8rem]">
         <div className="text-center">
-          <h1 className="text-4xl text-slate-700 font-semibold">Our College Events</h1>
+          <h1 className="text-2xl font-semibold uppercase text-slate-700 mb-6 text-center">Our College Events</h1>
           <p className="text-slate-700 font-medium py-5">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia quam cum eius expedita commodi debitis libero nihil voluptas, perspiciatis minima iure harum aspernatur facilis voluptatum exercitationem porro corrupti dolores ipsa nisi autem, quod praesentium minus? Qui facere vitae ipsum quasi quisquam modi sequi, ea, quia, ducimus optio voluptas. Amet, tempora.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2  lg:md:grid-cols-3 xl:md:grid-cols-4 gap-5">
           {allContent.length > 0 ? (
             allContent.map((e) => (
               <Link href={`/event/${e?._id}`} key={e?._id} className="bg-white shadow-2xl p-2">

@@ -24,9 +24,9 @@ export default function Navbar() {
   // routing
   const routing = [
     { path: "/", name: "Home" },
+    { path: "/collages", name: "Collages" },
     { path: "/admission", name: "Admission " },
     { path: "/events", name: "Events" },
-    { path: "/about-us", name: "About us" },
   ];
 
   if (error || OutError) {

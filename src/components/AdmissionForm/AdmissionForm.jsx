@@ -68,7 +68,7 @@ export default function CollegeAdmissionsForm() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="w-full max-w-4xl bg-white p-8 rounded-lg shadow-md">
-        <h1 className="text-2xl font-bold mb-6 text-center">
+        <h1 className="text-slate-700 text-2xl font-bold mb-6 text-center">
           COLLEGE ADMISSIONS FORM
         </h1>
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
