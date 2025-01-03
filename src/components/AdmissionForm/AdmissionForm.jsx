@@ -127,7 +127,7 @@ export default function CollegeAdmissionsForm() {
               {...register("dateOfBirth", {
                 required: "Date of birth is required",
               })}
-              className="mt-1 block w-full border border-gray-300 rounded-md p-2 bg-[#fff]"
+              className="mt-1 block w-full border border-gray-300 rounded-md p-2 bg-[#fff] text-slate-700"
             />
             {errors.dateOfBirth && (
               <span className="text-sm text-red-500">
