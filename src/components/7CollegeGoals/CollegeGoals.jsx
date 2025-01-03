@@ -1,66 +1,61 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import loadingAnimation from "@/assert/svg/2nd.json";
-import { useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
+import { useEffect, useRef } from "react";
 
 // Dynamic import of lottie-web with SSR disabled
 const LottiePlayer = dynamic(() => import("lottie-web"), { ssr: false });
 
 export default function CollegeGoals() {
   const animationContainer = useRef(null);
-  const [isLoaded, setIsLoaded] = useState(false); // For tracking load status
 
   useEffect(() => {
+    let animationInstance;
+
     const loadAnimation = async () => {
-      const lottie = (await LottiePlayer).default;
+      const lottie = await import("lottie-web");
 
       if (lottie && animationContainer.current) {
-        const animationInstance = lottie.loadAnimation({
+        animationInstance = lottie.default.loadAnimation({
           container: animationContainer.current,
           renderer: "svg",
           loop: true,
           autoplay: true,
           animationData: loadingAnimation,
         });
-
-        setIsLoaded(true);
-
-        // Clean up the animation on component unmount
-        return () => animationInstance.destroy();
       }
     };
 
-    if (typeof window !== "undefined") {
-      loadAnimation();
-    }
-  }, []); // Empty dependency array ensures it runs only once
+    loadAnimation();
 
-  if (!isLoaded) {
-    return <div>Loading animation...</div>;
-  }
+    // Clean up the animation on component unmount
+    return () => {
+      if (animationInstance) {
+        animationInstance.destroy();
+      }
+    };
+  }, []);
 
   return (
     <section className="py-10">
       <div className="container px-4 mx-auto">
-        <div className="flex flex-col sm:flex-row items-center justify-center justify-items-center gap-8">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
           {/* Lottie Animation */}
           <div ref={animationContainer} className="w-full h-auto"></div>
 
           {/* Text Content */}
           <div>
-            <div>
-              <h1 className="text-4xl font-bold">
-                <strong>7.</strong>College Goals
-              </h1>
-              <p className="text-base text-gray-700 font-medium my-5">
-                The "7 College Goal of Bangladesh" typically refers to the
-                vision and objectives associated with the seven government
-                colleges affiliated with the University of Dhaka. These colleges
-                play a significant role in providing quality higher education to
-                a large number of students across Bangladesh.
-              </p>
-            </div>
+            <h1 className="text-4xl font-bold">
+              <strong>7.</strong> College Goals
+            </h1>
+            <p className="text-base text-gray-700 font-medium my-5">
+              The "7 College Goal of Bangladesh" typically refers to the vision
+              and objectives associated with the seven government colleges
+              affiliated with the University of Dhaka. These colleges play a
+              significant role in providing quality higher education to a large
+              number of students across Bangladesh.
+            </p>
 
             <div className="mt-5">
               <div className="flex items-center gap-5">
