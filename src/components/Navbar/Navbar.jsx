@@ -24,10 +24,10 @@ export default function Navbar() {
   // routing
   const routing = [
     { path: "/", name: "Home" },
-    { path: "/collages", name: "Collages" },
+    { path: "/colleges", name: "Colleges" },
     { path: "/admission", name: "Admission " },
     { path: "/events", name: "Events" },
-    { path: "/my-collage", name: "My Collage" },
+    { path: "/my-college", name: "My College" },
   ];
 
   if (error || OutError) {
