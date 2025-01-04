@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -11,46 +11,37 @@ import "swiper/css/pagination";
 // import required modules
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
+import Loading from "@/app/loading";
+import allReviewInfo from "@/database/find/reviewFind/reviewFind";
 import Image from "next/image";
 import { FaRegStar, FaStar, FaStarHalf } from "react-icons/fa6";
-import clientImage from "../../images/svg/start-now-cover.ea60f005.png";
-export default function OurReviewSlider() {
+export default function OurReview() {
+  const [isLoading, setLoading] = useState(false);
+  const [reviewInfo, setReviewInfo] = useState([]);
   const progressCircle = useRef(null);
   const progressContent = useRef(null);
+  //
+
+  const allReview = async () => {
+    setLoading(true);
+    const { reviewInfo } = await allReviewInfo();
+    setReviewInfo(reviewInfo);
+    setLoading(false);
+  };
+  // console.log(reviewInfo);
+  useEffect(() => {
+    allReview();
+  }, []);
+
+  //
   const onAutoplayTimeLeft = (s, time, progress) => {
     progressCircle.current.style.setProperty("--progress", 1 - progress);
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
   };
-  // slider content
-  const reviewContent = [
-    {
-      id: 1,
-      name: "Tom curs",
-      position: "seo of lab info",
-      image: clientImage,
-      location: "Dhaka, Bangladesh",
-      review:
-        "Sure! For a concise review: Evaluated client's digital marketing. Website analyzed for SEO and UX. Content strategy and social media presence reviewed. Paid ads and email campaigns assessed. Conversion optimization and analytics examined. Recommendations provided for improvement",
-    },
-    {
-      id: 2,
-      name: "Tom curs",
-      position: "seo of lab info",
-      image: clientImage,
-      location: "Dhaka, Bangladesh",
-      review:
-        "Sure! For a concise review: Evaluated client's digital marketing. Website analyzed for SEO and UX. Content strategy and social media presence reviewed. Paid ads and email campaigns assessed. Conversion optimization and analytics examined. Recommendations provided for improvement",
-    },
-    {
-      id: 3,
-      name: "Tom curs",
-      position: "seo of lab info",
-      image: clientImage,
-      location: "Dhaka, Bangladesh",
-      review:
-        "Sure! For a concise review: Evaluated client's digital marketing. Website analyzed for SEO and UX. Content strategy and social media presence reviewed. Paid ads and email campaigns assessed. Conversion optimization and analytics examined. Recommendations provided for improvement",
-    },
-  ];
+
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
   return (
     <div className="hover:cursor-pointer">
       <Swiper
@@ -68,11 +59,13 @@ export default function OurReviewSlider() {
         onAutoplayTimeLeft={onAutoplayTimeLeft}
         className="mySwiper"
       >
-        {reviewContent.map((r) => (
-          <SwiperSlide key={r.id}>
-            <div className="bg-[#fff] shadow-2xl p-2">
+        {reviewInfo?.map((r) => (
+          <SwiperSlide key={r._id}>
+            <div className="bg-[#fff] text-slate-800 shadow-2xl p-2 rounded border ">
               <div className="">
-                <p className="text-base">{r.review}</p>
+                <p className="text-base text-center pt-5">
+                  {`${r.reviewDescription.slice(0, 200)}...`}
+                </p>
               </div>
               <div className="flex items-center justify-center gap-2 pt-4">
                 <FaStar className="text-yellow-500" />
@@ -84,18 +77,18 @@ export default function OurReviewSlider() {
               <div className="flex items-center justify-center gap-6 py-10">
                 <div className="">
                   <Image
-                    className="mx-auto rounded-full  shadow-2xl"
                     loading="lazy"
-                    // placeholder="blur"
+                    quality={100}
                     src={r.image}
-                    width={"80"}
-                    height={"auto"}
+                    width={70}
+                    height={60}
                     alt="Picture of the author"
+                    className="mx-auto rounded-full  shadow-2xl h-auto"
                   />
                 </div>
                 <div className="">
-                  <h2>{r.name}</h2>
-                  <p className="text-sm">{r.location}</p>
+                  <h2>{r.displayName}</h2>
+                  <p className="text-sm">{r.location || "Unknown"}</p>
                 </div>
               </div>
             </div>
