@@ -27,6 +27,7 @@ export default function Navbar() {
     { path: "/collages", name: "Collages" },
     { path: "/admission", name: "Admission " },
     { path: "/events", name: "Events" },
+    { path: "/my-collage", name: "My Collage" },
   ];
 
   if (error || OutError) {
@@ -184,7 +185,7 @@ export default function Navbar() {
               >
                 <li>
                   <Link
-                    href={`/profile`}
+                    href={`/user/profile`}
                     className="justify-between hover:text-blue-500"
                   >
                     Profile
